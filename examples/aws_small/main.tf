@@ -1,4 +1,4 @@
-module "aws" {
+module "aws_cp" {
   source = "../../modules/aws"
 
   zk_servers = 1
