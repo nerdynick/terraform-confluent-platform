@@ -24,6 +24,9 @@ variable "default_security_groups" {
     default = ["bootcamp-cp", "bootcamp-ad"]
 }
 
+###########################
+# Derived Vars
+###########################
 data "template_file" "cluster_dns_postfix" {
     template = "${lower(join(".", compact([var.cluster_id, var.first_name])))}"
 }
