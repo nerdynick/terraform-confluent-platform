@@ -51,7 +51,7 @@ variable "zk_root_volume_size" {
 }
 
 ###########################
-# Broker Var
+# Broker Vars
 ###########################
 variable "broker_servers" {
     type = number
@@ -67,7 +67,7 @@ variable "broker_root_volume_size" {
 }
 
 ###########################
-# C3 Var
+# C3 Vars
 ###########################
 variable "c3_servers" {
     type = number
@@ -84,7 +84,7 @@ variable "c3_root_volume_size" {
 
 
 ###########################
-# KSQL Var
+# KSQL Vars
 ###########################
 variable "ksql_servers" {
     type = number
@@ -101,7 +101,7 @@ variable "ksql_root_volume_size" {
 
 
 ###########################
-# Connect Var
+# Connect Vars
 ###########################
 variable "connect_servers" {
     type = number
@@ -118,7 +118,7 @@ variable "connect_root_volume_size" {
 
 
 ###########################
-# RESTProxy Var
+# RESTProxy Vars
 ###########################
 variable "rest_servers" {
     type = number
@@ -135,7 +135,7 @@ variable "rest_root_volume_size" {
 
 
 ###########################
-# SchemaReg Var
+# SchemaReg Vars
 ###########################
 variable "sr_servers" {
     type = number
