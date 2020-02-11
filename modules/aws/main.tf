@@ -44,8 +44,12 @@ data "aws_subnet" "subnet_c" {
     }
 }
 
-data "aws_route53_zone" "base" {
-    name = "confluent.nerdynick.net"
+data "aws_route53_zone" "public" {
+    name = "ps.confluent.io"
+}
+
+data "aws_route53_zone" "private" {
+    name = "ps.confluent-internal.io"
 }
 
 ###########################
@@ -83,7 +87,7 @@ resource "aws_instance" "zookeeper" {
 
 resource "aws_route53_record" "zookeeper" {
     count   = var.zk_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "zk${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -125,7 +129,7 @@ resource "aws_instance" "broker" {
 
 resource "aws_route53_record" "broker" {
     count   = var.broker_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "kfk${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -167,7 +171,7 @@ resource "aws_instance" "c3" {
 
 resource "aws_route53_record" "c3" {
     count   = var.c3_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "ccc${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -209,7 +213,7 @@ resource "aws_instance" "ksql" {
 
 resource "aws_route53_record" "ksql" {
     count   = var.ksql_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "ksql${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -251,7 +255,7 @@ resource "aws_instance" "connect" {
 
 resource "aws_route53_record" "connect" {
     count   = var.connect_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "connect${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -293,7 +297,7 @@ resource "aws_instance" "rest" {
 
 resource "aws_route53_record" "rest" {
     count   = var.rest_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "rest${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
@@ -335,7 +339,7 @@ resource "aws_instance" "sr" {
 
 resource "aws_route53_record" "sr" {
     count   = var.sr_servers
-    zone_id = data.aws_route53_zone.base.zone_id
+    zone_id = data.aws_route53_zone.public.zone_id
     name    = "sr${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"

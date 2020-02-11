@@ -28,7 +28,7 @@ variable "default_security_groups" {
 # Derived Vars
 ###########################
 data "template_file" "cluster_dns_postfix" {
-    template = "${lower(join(".", compact([var.cluster_id, var.first_name])))}"
+    template = "${lower(join(".", compact([var.cluster_id, var.first_name, "aws"])))}"
 }
 data "template_file" "cluster_name_prefix" {
     template = "${lower(join("-", compact([var.first_name, var.cluster_id])))}"
