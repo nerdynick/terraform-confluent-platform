@@ -109,7 +109,7 @@ variable "connect_servers" {
 }
 variable "connect_instance_type" {
     type = string
-    default = "t3.small"
+    default = "t3.medium"
 }
 variable "connect_root_volume_size" {
     type = number

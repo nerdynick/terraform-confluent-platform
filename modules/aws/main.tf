@@ -343,5 +343,5 @@ resource "aws_route53_record" "sr" {
     name    = "sr${count.index+1}.${data.template_file.cluster_dns_postfix.rendered}"
     type    = "CNAME"
     ttl     = "300"
-    records = [element(aws_instance.zookeeper.*.public_dns, count.index)]
+    records = [element(aws_instance.sr.*.public_dns, count.index)]
 }
