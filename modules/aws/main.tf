@@ -1,12 +1,30 @@
-provider "aws" {
-    region = "us-west-2"
-}
-
 data "aws_vpc" "bootcamp" {
 #   id = "vpc-047944e470c1d51db"
     filter {
         name = "tag:Name"
         values = ["vpc-bootcamp"]
+    }
+}
+
+data "aws_subnet" "subnet_a" {
+    vpc_id  = data.aws_vpc.bootcamp.id
+    filter {
+        name = "tag:Name"
+        values = ["vpc-bootcamp-a"]
+    }
+}
+data "aws_subnet" "subnet_b" {
+    vpc_id  = data.aws_vpc.bootcamp.id
+    filter {
+        name = "tag:Name"
+        values = ["vpc-bootcamp-a"]
+    }
+}
+data "aws_subnet" "subnet_c" {
+    vpc_id  = data.aws_vpc.bootcamp.id
+    filter {
+        name = "tag:Name"
+        values = ["vpc-bootcamp-a"]
     }
 }
 
@@ -18,30 +36,8 @@ data "aws_security_groups" "bootcamp" {
   
   filter {
     name   = "vpc-id"
-    values = ["vpc-047944e470c1d51db"]
+    values = [data.aws_vpc.bootcamp.id]
   }
-}
-
-data "aws_subnet" "subnet_a" {
-    vpc_id  = data.aws_vpc.bootcamp.id
-    filter {
-        name = "availability-zone"
-        values = ["us-west-2a"]
-    }
-}
-data "aws_subnet" "subnet_b" {
-    vpc_id  = data.aws_vpc.bootcamp.id
-    filter {
-        name = "availability-zone"
-        values = ["us-west-2b"]
-    }
-}
-data "aws_subnet" "subnet_c" {
-    vpc_id  = data.aws_vpc.bootcamp.id
-    filter {
-        name = "availability-zone"
-        values = ["us-west-2c"]
-    }
 }
 
 data "aws_route53_zone" "public" {

@@ -1,3 +1,7 @@
+provider "aws" {
+    region = "us-west-2"
+}
+
 variable "first_name" {
     type = string
     description = "Your first name. NOTE: No special characters and all in lowercase."

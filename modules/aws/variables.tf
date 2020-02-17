@@ -21,7 +21,7 @@ variable "security_groups" {
     default = []
 }
 variable "default_security_groups" {
-    default = ["bootcamp-cp", "bootcamp-ad"]
+    default = ["bootcamp-cp", "bootcamp-cp-jmx", "bootcamp-ad"]
 }
 
 ###########################
