@@ -50,13 +50,37 @@ data "aws_route53_zone" "private" {
 ###########################
 # Splunk Resources
 ###########################
+resource "aws_security_group" "splunk" {
+    name = "{data.cluster_name_prefix}-splunk"
+    description = "General Splunk Ports"
+    vpc_id = data.aws_vpc.bootcamp.id
+    
+    tags = {
+        Name = "{data.cluster_name_prefix}-splunk"
+        name = "{data.cluster_name_prefix}-splunk"
+        Owner = var.first_name
+        owner = var.first_name
+        SA = var.first_name
+        sa = var.first_name
+    }
+    
+    #General Ports
+    ingress {
+        description = "Splunk Web Interface"
+        from_port   = 8000
+        to_port     = 8000
+        protocol    = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+}
+
 resource "aws_instance" "splunk" {
     count           = var.splunk_servers
     ami             = var.image_id
     instance_type   = var.splunk_instance_type
     key_name        = var.key_pair
     subnet_id       = data.aws_subnet.subnet_a.id
-    vpc_security_group_ids = data.aws_security_groups.bootcamp.ids
+    vpc_security_group_ids = concat(data.aws_security_groups.bootcamp.ids, [aws_security_group.splunk.id])
     
 
     tags = {
