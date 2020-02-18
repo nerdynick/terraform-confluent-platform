@@ -16,16 +16,10 @@ variable "key_pair" {
     description = "Your KeyPair Name that you have already added to AWS"  
 }
 
-module "aws_cp" {
-  source = "../../modules/aws_cp"
+module "aws_splunk" {
+  source = "../../modules/aws_splunk"
 
-  zk_servers = 3
-  broker_servers = 3
-  c3_servers = 1
-  ksql_servers = 2
-  connect_servers = 2
-  rest_servers = 1
-  sr_servers = 2
+  splunk_servers = 1
   first_name = var.first_name
   cluster_id = var.cluster_id
   key_pair = var.key_pair

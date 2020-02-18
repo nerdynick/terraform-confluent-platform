@@ -17,7 +17,7 @@ variable "key_pair" {
 }
 
 module "aws_cp" {
-  source = "../../modules/aws"
+  source = "../../modules/aws_cp"
 
   zk_servers = 1
   broker_servers = 1

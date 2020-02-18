@@ -1,5 +1,4 @@
 data "aws_vpc" "bootcamp" {
-#   id = "vpc-047944e470c1d51db"
     filter {
         name = "tag:Name"
         values = ["vpc-bootcamp"]
