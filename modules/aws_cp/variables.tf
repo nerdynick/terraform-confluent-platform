@@ -9,7 +9,8 @@ variable "cluster_id" {
 }
 variable "image_id" {
     type = string
-    #Ubuntu 18.04 LTS x64
+    #Ubuntu 18.04 LTS x64: ami-06d51e91cea0dac8d
+    # CentOS 7 X64:        ami-01ed306a12b7d1c96
     default = "ami-06d51e91cea0dac8d"
 }
 variable "key_pair" {

@@ -18,7 +18,8 @@ variable "key_pair" {
 
 module "aws_cp" {
   source = "../../modules/aws_cp"
-
+    
+  image_id = "ami-01ed306a12b7d1c96"
   zk_servers = 3
   broker_servers = 3
   c3_servers = 1
