@@ -23,7 +23,7 @@ module "aws_cp" {
   broker_servers = 1
   c3_servers = 1
   ksql_servers = 0
-  connect_servers = 0
+  connect_servers = 1
   rest_servers = 0
   sr_servers = 0
   first_name = var.first_name

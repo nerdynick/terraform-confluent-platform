@@ -25,6 +25,37 @@ variable "default_security_groups" {
     default = ["bootcamp-cp", "bootcamp-cp-jmx", "bootcamp-ad"]
 }
 
+variable "vpc" {
+    default = "vpc-bootcamp"
+}
+variable "subnet_a" {
+    default = "vpc-bootcamp-a"
+}
+variable "subnet_b" {
+    default = "vpc-bootcamp-b"
+}
+variable "subnet_c" {
+    default = "vpc-bootcamp-c"
+}
+
+variable "dns_public" {
+    default = "ps.confluent.io"
+}
+
+variable "dns_private" {
+    default = "ps.confluent-internal.io"
+}
+
+variable "default_tags" {
+    type = map
+    default = {
+        Owner = var.first_name
+        owner = var.first_name
+        SA = var.first_name
+        sa = var.first_name
+    }
+}
+
 ###########################
 # Derived Vars
 ###########################
@@ -38,15 +69,15 @@ data "template_file" "cluster_name_prefix" {
 ###########################
 # Zookeeper Vars
 ###########################
-variable "zk_servers" {
+variable "zookeeper_servers" {
     type = number
     default = 1
 }
-variable "zk_instance_type" {
+variable "zookeeper_instance_type" {
     type = string
     default = "t3.small"
 }
-variable "zk_root_volume_size" {
+variable "zookeeper_root_volume_size" {
     type = number
     default = 15
 }
@@ -54,15 +85,15 @@ variable "zk_root_volume_size" {
 ###########################
 # Broker Vars
 ###########################
-variable "broker_servers" {
+variable "kafka_broker_servers" {
     type = number
     default = 1
 }
-variable "broker_instance_type" {
+variable "kafka_broker_instance_type" {
     type = string
     default = "t3.medium"
 }
-variable "broker_root_volume_size" {
+variable "kafka_broker_root_volume_size" {
     type = number
     default = 30
 }
@@ -70,15 +101,15 @@ variable "broker_root_volume_size" {
 ###########################
 # C3 Vars
 ###########################
-variable "c3_servers" {
+variable "control_center_servers" {
     type = number
     default = 0
 }
-variable "c3_instance_type" {
+variable "control_center_instance_type" {
     type = string
     default = "t3.medium"
 }
-variable "c3_root_volume_size" {
+variable "control_center_root_volume_size" {
     type = number
     default = 15
 }
@@ -104,15 +135,15 @@ variable "ksql_root_volume_size" {
 ###########################
 # Connect Vars
 ###########################
-variable "connect_servers" {
+variable "kafka_connect_servers" {
     type = number
     default = 0
 }
-variable "connect_instance_type" {
+variable "kafka_connect_instance_type" {
     type = string
     default = "t3.medium"
 }
-variable "connect_root_volume_size" {
+variable "kafka_connect_root_volume_size" {
     type = number
     default = 15
 }
@@ -121,15 +152,15 @@ variable "connect_root_volume_size" {
 ###########################
 # RESTProxy Vars
 ###########################
-variable "rest_servers" {
+variable "rest_proxy_servers" {
     type = number
     default = 0
 }
-variable "rest_instance_type" {
+variable "rest_proxy_instance_type" {
     type = string
     default = "t3.small"
 }
-variable "rest_root_volume_size" {
+variable "rest_proxy_root_volume_size" {
     type = number
     default = 15
 }
@@ -138,15 +169,15 @@ variable "rest_root_volume_size" {
 ###########################
 # SchemaReg Vars
 ###########################
-variable "sr_servers" {
+variable "schema_registry_servers" {
     type = number
     default = 0
 }
-variable "sr_instance_type" {
+variable "schema_registry_instance_type" {
     type = string
     default = "t3.small"
 }
-variable "sr_root_volume_size" {
+variable "schema_registry_root_volume_size" {
     type = number
     default = 15
 }
