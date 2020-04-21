@@ -48,7 +48,7 @@ data "aws_route53_zone" "private" {
 }
 
 
-module "ps-cp-aws" {
+module "shared-cp-aws" {
     source = "cp-aws"
 
     zookeeper_servers = var.zookeeper_servers

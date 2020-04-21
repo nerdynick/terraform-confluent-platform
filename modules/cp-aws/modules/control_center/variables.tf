@@ -39,14 +39,19 @@ variable "c3_security_groups_ids" {
 variable "c3_dns_zone_id" {
     type = string
 }
-variable "c3_dns_prefix" {
-    type = string
-    default = "ccc"
-}
 variable "c3_dns_postfix" {
     type = string
 }
 variable "c3_dns_ttl" {
     type = "string"
     default = "300"
+}
+
+variable "c3_name_template" {
+    type = "string"
+    default = "ccc${format("%02f", count)}"
+}
+variable "c3_dns_template" {
+    type = "string"
+    default = "${name}"
 }

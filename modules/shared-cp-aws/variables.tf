@@ -46,16 +46,6 @@ variable "dns_private" {
     default = "ps.confluent-internal.io"
 }
 
-variable "default_tags" {
-    type = map
-    default = {
-        Owner = var.first_name
-        owner = var.first_name
-        SA = var.first_name
-        sa = var.first_name
-    }
-}
-
 ###########################
 # Derived Vars
 ###########################
@@ -64,6 +54,15 @@ data "template_file" "cluster_dns_postfix" {
 }
 data "template_file" "cluster_name_prefix" {
     template = "${lower(join("-", compact([var.first_name, var.cluster_id])))}"
+}
+variable "default_tags" {
+    type = map
+    default = {
+        Owner = var.first_name
+        owner = var.first_name
+        SA = var.first_name
+        sa = var.first_name
+    }
 }
 
 ###########################
