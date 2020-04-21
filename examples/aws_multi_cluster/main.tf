@@ -12,32 +12,47 @@ variable "key_pair" {
 }
 
 
-module "aws_cp_manage" {
+module "aws_cp_dc1" {
   source = "../../modules/aws_cp"
 
-  zk_servers = 3
+  zk_servers = 1
   broker_servers = 3
   c3_servers = 1
+  ksql_servers = 1
+  connect_servers = 1
+  rest_servers = 0
+  sr_servers = 1
+  first_name = var.first_name
+  cluster_id = "dc1"
+  key_pair = var.key_pair
+}
+
+module "aws_cp_dc2" {
+  source = "../../modules/aws_cp"
+
+  zk_servers = 1
+  broker_servers = 3
+  c3_servers = 0
+  ksql_servers = 1
+  connect_servers = 1
+  rest_servers = 0
+  sr_servers = 1
+  first_name = var.first_name
+  cluster_id = "dc2"
+  key_pair = var.key_pair
+}
+
+module "aws_cp_dc3" {
+  source = "../../modules/aws_cp"
+
+  zk_servers = 1
+  broker_servers = 0
+  c3_servers = 0
   ksql_servers = 0
   connect_servers = 0
   rest_servers = 0
   sr_servers = 0
   first_name = var.first_name
-  cluster_id = "manage"
-  key_pair = var.key_pair
-}
-
-module "aws_cp_data" {
-  source = "../../modules/aws_cp"
-
-  zk_servers = 3
-  broker_servers = 3
-  c3_servers = 0
-  ksql_servers = 1
-  connect_servers = 1
-  rest_servers = 1
-  sr_servers = 1
-  first_name = var.first_name
-  cluster_id = "data"
+  cluster_id = "dc3"
   key_pair = var.key_pair
 }
