@@ -12,8 +12,8 @@ variable "key_pair" {
 }
 
 
-module "aws_cp_dc1" {
-  source = "../../modules/aws_cp"
+module "aws_cp_c1" {
+  source = "../../modules/shared-cp-aws"
 
   zk_servers = 1
   broker_servers = 3
@@ -23,12 +23,12 @@ module "aws_cp_dc1" {
   rest_servers = 0
   sr_servers = 1
   first_name = var.first_name
-  cluster_id = "dc1"
+  cluster_id = "c1"
   key_pair = var.key_pair
 }
 
-module "aws_cp_dc2" {
-  source = "../../modules/aws_cp"
+module "aws_cp_c2" {
+  source = "../../modules/shared-cp-aws"
 
   zk_servers = 1
   broker_servers = 3
@@ -38,12 +38,12 @@ module "aws_cp_dc2" {
   rest_servers = 0
   sr_servers = 1
   first_name = var.first_name
-  cluster_id = "dc2"
+  cluster_id = "c2"
   key_pair = var.key_pair
 }
 
-module "aws_cp_dc3" {
-  source = "../../modules/aws_cp"
+module "aws_cp_c3" {
+  source = "../../modules/shared-cp-aws"
 
   zk_servers = 1
   broker_servers = 0
@@ -53,6 +53,6 @@ module "aws_cp_dc3" {
   rest_servers = 0
   sr_servers = 0
   first_name = var.first_name
-  cluster_id = "dc3"
+  cluster_id = "c3"
   key_pair = var.key_pair
 }

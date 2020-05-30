@@ -18,7 +18,7 @@ variable "key_pair" {
 
 
 module "aws_cp" {
-  source = "../../modules/aws_cp"
+  source = "../../modules/shared-cp-aws"
 
   zk_servers = 3
   broker_servers = 3
