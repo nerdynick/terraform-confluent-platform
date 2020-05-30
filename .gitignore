@@ -30,3 +30,4 @@ override.tf.json
 
 .project
 terraform.tfvars
+modules/terraform-aws-confluent-platform
