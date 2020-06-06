@@ -15,13 +15,14 @@ variable "key_pair" {
 module "aws_cp_c1" {
   source = "../../modules/shared-cp-aws"
 
-  zk_servers = 1
-  broker_servers = 3
-  c3_servers = 1
+  zookeeper_servers = 1
+  kafka_broker_servers = 3
+  control_center_servers = 1
   ksql_servers = 1
-  connect_servers = 1
-  rest_servers = 0
-  sr_servers = 1
+  kafka_connect_servers = 1
+  rest_proxy_servers = 0
+  schema_registry_servers = 1
+  
   first_name = var.first_name
   cluster_id = "c1"
   key_pair = var.key_pair
@@ -30,13 +31,14 @@ module "aws_cp_c1" {
 module "aws_cp_c2" {
   source = "../../modules/shared-cp-aws"
 
-  zk_servers = 1
-  broker_servers = 3
-  c3_servers = 0
+  zookeeper_servers = 1
+  kafka_broker_servers = 3
+  control_center_servers = 1
   ksql_servers = 1
-  connect_servers = 1
-  rest_servers = 0
-  sr_servers = 1
+  kafka_connect_servers = 1
+  rest_proxy_servers = 0
+  schema_registry_servers = 1
+  
   first_name = var.first_name
   cluster_id = "c2"
   key_pair = var.key_pair
@@ -45,13 +47,14 @@ module "aws_cp_c2" {
 module "aws_cp_c3" {
   source = "../../modules/shared-cp-aws"
 
-  zk_servers = 1
-  broker_servers = 0
-  c3_servers = 0
+  zookeeper_servers = 1
+  kafka_broker_servers = 0
+  control_center_servers = 0
   ksql_servers = 0
-  connect_servers = 0
-  rest_servers = 0
-  sr_servers = 0
+  kafka_connect_servers = 0
+  rest_proxy_servers = 0
+  schema_registry_servers = 0
+  
   first_name = var.first_name
   cluster_id = "c3"
   key_pair = var.key_pair

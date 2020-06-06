@@ -20,13 +20,15 @@ module "aws_cp" {
   source = "../../modules/shared-cp-aws"
     
   image_id = "ami-01ed306a12b7d1c96"
-  zk_servers = 3
-  broker_servers = 3
-  c3_servers = 1
+  
+  zookeeper_servers = 3
+  kafka_broker_servers = 3
+  control_center_servers = 1
   ksql_servers = 2
-  connect_servers = 2
-  rest_servers = 1
-  sr_servers = 2
+  kafka_connect_servers = 2
+  rest_proxy_servers = 1
+  schema_registry_servers = 2
+  
   first_name = var.first_name
   cluster_id = var.cluster_id
   key_pair = var.key_pair

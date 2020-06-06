@@ -20,13 +20,14 @@ variable "key_pair" {
 module "aws_cp" {
   source = "../../modules/shared-cp-aws"
 
-  zk_servers = 3
-  broker_servers = 3
-  c3_servers = 1
+  zookeeper_servers = 3
+  kafka_broker_servers = 3
+  control_center_servers = 1
   ksql_servers = 1
-  connect_servers = 1
-  rest_servers = 1
-  sr_servers = 1
+  kafka_connect_servers = 1
+  rest_proxy_servers = 1
+  schema_registry_servers = 1
+  
   first_name = var.first_name
   cluster_id = var.cluster_id
   key_pair = var.key_pair
